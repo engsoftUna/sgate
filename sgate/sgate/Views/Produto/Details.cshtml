@@ -1,0 +1,57 @@
+﻿@model sgate.Models.produto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>produto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idproduto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idproduto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.descricao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.descricao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dataexpiracao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dataexpiracao)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.valorproduto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.valorproduto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pacote.pacote1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pacote.pacote1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tipoproduto.tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipoproduto.tipo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sgateModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="sgateModelStoreContainer">
+          <EntitySet Name="pacote" EntityType="sgateModel.Store.pacote" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="produto" EntityType="sgateModel.Store.produto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tipoproduto" EntityType="sgateModel.Store.tipoproduto" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__produto__idpacot__08EA5793" Association="sgateModel.Store.FK__produto__idpacot__08EA5793">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produto__idtipo__09DE7BCC" Association="sgateModel.Store.FK__produto__idtipo__09DE7BCC">
+            <End Role="tipoproduto" EntitySet="tipoproduto" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="pacote">
+          <Key>
+            <PropertyRef Name="idpacote" />
+          </Key>
+          <Property Name="idpacote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pacote" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="idproduto" />
+          </Key>
+          <Property Name="idproduto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="varchar" MaxLength="250" />
+          <Property Name="dataexpiracao" Type="datetime" />
+          <Property Name="valorproduto" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="idpacote" Type="int" />
+          <Property Name="idtipo" Type="int" />
+        </EntityType>
+        <EntityType Name="tipoproduto">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Name="idtipo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__produto__idpacot__08EA5793">
+          <End Role="pacote" Type="sgateModel.Store.pacote" Multiplicity="0..1" />
+          <End Role="produto" Type="sgateModel.Store.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idpacote" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="idpacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produto__idtipo__09DE7BCC">
+          <End Role="tipoproduto" Type="sgateModel.Store.tipoproduto" Multiplicity="0..1" />
+          <End Role="produto" Type="sgateModel.Store.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoproduto">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sgateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="sgateEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="pacote" EntityType="sgateModel.pacote" />
+          <EntitySet Name="produto" EntityType="sgateModel.produto" />
+          <EntitySet Name="tipoproduto" EntityType="sgateModel.tipoproduto" />
+          <AssociationSet Name="FK__produto__idpacot__08EA5793" Association="sgateModel.FK__produto__idpacot__08EA5793">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produto__idtipo__09DE7BCC" Association="sgateModel.FK__produto__idtipo__09DE7BCC">
+            <End Role="tipoproduto" EntitySet="tipoproduto" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="pacote">
+          <Key>
+            <PropertyRef Name="idpacote" />
+          </Key>
+          <Property Name="idpacote" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="pacote1" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="produto" Relationship="sgateModel.FK__produto__idpacot__08EA5793" FromRole="pacote" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="idproduto" />
+          </Key>
+          <Property Name="idproduto" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="dataexpiracao" Type="DateTime" Precision="3" />
+          <Property Name="valorproduto" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="idpacote" Type="Int32" />
+          <Property Name="idtipo" Type="Int32" />
+          <NavigationProperty Name="pacote" Relationship="sgateModel.FK__produto__idpacot__08EA5793" FromRole="produto" ToRole="pacote" />
+          <NavigationProperty Name="tipoproduto" Relationship="sgateModel.FK__produto__idtipo__09DE7BCC" FromRole="produto" ToRole="tipoproduto" />
+        </EntityType>
+        <EntityType Name="tipoproduto">
+          <Key>
+            <PropertyRef Name="idtipo" />
+          </Key>
+          <Property Name="idtipo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="produto" Relationship="sgateModel.FK__produto__idtipo__09DE7BCC" FromRole="tipoproduto" ToRole="produto" />
+        </EntityType>
+        <Association Name="FK__produto__idpacot__08EA5793">
+          <End Role="pacote" Type="sgateModel.pacote" Multiplicity="0..1" />
+          <End Role="produto" Type="sgateModel.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idpacote" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="idpacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produto__idtipo__09DE7BCC">
+          <End Role="tipoproduto" Type="sgateModel.tipoproduto" Multiplicity="0..1" />
+          <End Role="produto" Type="sgateModel.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoproduto">
+              <PropertyRef Name="idtipo" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sgateModelStoreContainer" CdmEntityContainer="sgateEntities">
+          <EntitySetMapping Name="pacote">
+            <EntityTypeMapping TypeName="sgateModel.pacote">
+              <MappingFragment StoreEntitySet="pacote">
+                <ScalarProperty Name="idpacote" ColumnName="idpacote" />
+                <ScalarProperty Name="pacote1" ColumnName="pacote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produto">
+            <EntityTypeMapping TypeName="sgateModel.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="idproduto" ColumnName="idproduto" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="dataexpiracao" ColumnName="dataexpiracao" />
+                <ScalarProperty Name="valorproduto" ColumnName="valorproduto" />
+                <ScalarProperty Name="idpacote" ColumnName="idpacote" />
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoproduto">
+            <EntityTypeMapping TypeName="sgateModel.tipoproduto">
+              <MappingFragment StoreEntitySet="tipoproduto">
+                <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

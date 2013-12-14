@@ -1,0 +1,63 @@
+﻿@model IEnumerable<sgate.Models.produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idproduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataexpiracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valorproduto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pacote.pacote1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoproduto.tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idproduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataexpiracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valorproduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pacote.pacote1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoproduto.tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
