@@ -40,7 +40,6 @@ namespace sgate.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.idpacote = new SelectList(db.pacote, "idpacote", "pacote1");
             ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo");
             return View();
         }

@@ -19,17 +19,22 @@ namespace sgate.Models
         {
             this.itenspacote = new HashSet<itenspacote>();
         }
+        
         [Display(Name = "Código")]
         public int idproduto { get; set; }
+        
         [Required]
         [Display(Name = "Descriçao")]
         public string descricao { get; set; }
+        
         [Required]
         [Display(Name = "Data de Expiração")]
         public Nullable<System.DateTime> dataexpiracao { get; set; }
+        
         [Required]
         [Display(Name = "Valor")]
         public Nullable<decimal> valorproduto { get; set; }
+        
         [Required]
         [Display(Name = "Tipo de Produto")]
         public Nullable<int> idtipo { get; set; }
