@@ -9,113 +9,107 @@ using sgate.Models;
 
 namespace sgate.Controllers
 {
-    public class ProdutoController : Controller
+    public class PacoteController : Controller
     {
         private sgateEntities db = new sgateEntities();
 
         //
-        // GET: /Produto/
+        // GET: /Pacote/
 
         public ActionResult Index()
         {
-            var produto = db.produto.Include(p => p.tipoproduto);
-            return View(produto.ToList());
+            return View(db.pacote.ToList());
         }
 
         //
-        // GET: /Produto/Details/5
+        // GET: /Pacote/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            pacote pacote = db.pacote.Find(id);
+            if (pacote == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(pacote);
         }
 
         //
-        // GET: /Produto/Create
+        // GET: /Pacote/Create
 
         public ActionResult Create()
         {
-            ViewBag.idpacote = new SelectList(db.pacote, "idpacote", "pacote1");
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo");
             return View();
         }
 
         //
-        // POST: /Produto/Create
+        // POST: /Pacote/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(produto produto)
+        public ActionResult Create(pacote pacote)
         {
             if (ModelState.IsValid)
             {
-                db.produto.Add(produto);
+                db.pacote.Add(pacote);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(pacote);
         }
 
         //
-        // GET: /Produto/Edit/5
+        // GET: /Pacote/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            pacote pacote = db.pacote.Find(id);
+            if (pacote == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(pacote);
         }
 
         //
-        // POST: /Produto/Edit/5
+        // POST: /Pacote/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(produto produto)
+        public ActionResult Edit(pacote pacote)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produto).State = EntityState.Modified;
+                db.Entry(pacote).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(pacote);
         }
 
         //
-        // GET: /Produto/Delete/5
+        // GET: /Pacote/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            pacote pacote = db.pacote.Find(id);
+            if (pacote == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(pacote);
         }
 
         //
-        // POST: /Produto/Delete/5
+        // POST: /Pacote/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            produto produto = db.produto.Find(id);
-            db.produto.Remove(produto);
+            pacote pacote = db.pacote.Find(id);
+            db.pacote.Remove(pacote);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

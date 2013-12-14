@@ -6,27 +6,19 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace sgate.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tipoproduto
+    public partial class itenspacote
     {
-        public tipoproduto()
-        {
-            this.produto = new HashSet<produto>();
-        }
+        public int idItemPacote { get; set; }
+        public Nullable<int> idPacote { get; set; }
+        public Nullable<int> idproduto { get; set; }
     
-        [Display (Name="Código")]
-        public int idtipo { get; set; }
-
-        [Required]
-        [Display(Name = "Código")]
-        public string tipo { get; set; }
-    
-        public virtual ICollection<produto> produto { get; set; }
+        public virtual pacote pacote { get; set; }
+        public virtual produto produto { get; set; }
     }
 }

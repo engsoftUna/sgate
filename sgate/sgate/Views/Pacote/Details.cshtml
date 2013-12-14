@@ -1,0 +1,29 @@
+﻿@model sgate.Models.pacote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>pacote</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idpacote)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idpacote)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pacote1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pacote1)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

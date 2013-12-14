@@ -4,20 +4,48 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sgateModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sgateModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="sgateModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="sgateModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="itenspacote" EntityType="sgateModel.Store.itenspacote" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="pacote" EntityType="sgateModel.Store.pacote" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="produto" EntityType="sgateModel.Store.produto" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tipoproduto" EntityType="sgateModel.Store.tipoproduto" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK__produto__idpacot__08EA5793" Association="sgateModel.Store.FK__produto__idpacot__08EA5793">
+          <AssociationSet Name="FK__itenspaco__idPac__0DAF0CB0" Association="sgateModel.Store.FK__itenspaco__idPac__0DAF0CB0">
             <End Role="pacote" EntitySet="pacote" />
-            <End Role="produto" EntitySet="produto" />
+            <End Role="itenspacote" EntitySet="itenspacote" />
           </AssociationSet>
-          <AssociationSet Name="FK__produto__idtipo__09DE7BCC" Association="sgateModel.Store.FK__produto__idtipo__09DE7BCC">
+          <AssociationSet Name="FK__itenspaco__idpro__0EA330E9" Association="sgateModel.Store.FK__itenspaco__idpro__0EA330E9">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="itenspacote" EntitySet="itenspacote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__produto__idtipo__0CBAE877" Association="sgateModel.Store.FK__produto__idtipo__0CBAE877">
             <End Role="tipoproduto" EntitySet="tipoproduto" />
             <End Role="produto" EntitySet="produto" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Name="idcliente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+          <Property Name="cpf" Type="varchar" MaxLength="250" />
+          <Property Name="logradouro" Type="varchar" MaxLength="250" />
+          <Property Name="numero" Type="int" />
+          <Property Name="bairro" Type="varchar" MaxLength="250" />
+          <Property Name="cidade" Type="varchar" MaxLength="250" />
+          <Property Name="uf" Type="varchar" MaxLength="250" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="itenspacote">
+          <Key>
+            <PropertyRef Name="idItemPacote" />
+          </Key>
+          <Property Name="idItemPacote" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idPacote" Type="int" />
+          <Property Name="idproduto" Type="int" />
+        </EntityType>
         <EntityType Name="pacote">
           <Key>
             <PropertyRef Name="idpacote" />
@@ -33,7 +61,6 @@
           <Property Name="descricao" Type="varchar" MaxLength="250" />
           <Property Name="dataexpiracao" Type="datetime" />
           <Property Name="valorproduto" Type="decimal" Precision="20" Scale="2" />
-          <Property Name="idpacote" Type="int" />
           <Property Name="idtipo" Type="int" />
         </EntityType>
         <EntityType Name="tipoproduto">
@@ -43,19 +70,31 @@
           <Property Name="idtipo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="tipo" Type="varchar" MaxLength="250" />
         </EntityType>
-        <Association Name="FK__produto__idpacot__08EA5793">
+        <Association Name="FK__itenspaco__idPac__0DAF0CB0">
           <End Role="pacote" Type="sgateModel.Store.pacote" Multiplicity="0..1" />
-          <End Role="produto" Type="sgateModel.Store.produto" Multiplicity="*" />
+          <End Role="itenspacote" Type="sgateModel.Store.itenspacote" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pacote">
               <PropertyRef Name="idpacote" />
             </Principal>
-            <Dependent Role="produto">
-              <PropertyRef Name="idpacote" />
+            <Dependent Role="itenspacote">
+              <PropertyRef Name="idPacote" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__produto__idtipo__09DE7BCC">
+        <Association Name="FK__itenspaco__idpro__0EA330E9">
+          <End Role="produto" Type="sgateModel.Store.produto" Multiplicity="0..1" />
+          <End Role="itenspacote" Type="sgateModel.Store.itenspacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="idproduto" />
+            </Principal>
+            <Dependent Role="itenspacote">
+              <PropertyRef Name="idproduto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__produto__idtipo__0CBAE877">
           <End Role="tipoproduto" Type="sgateModel.Store.tipoproduto" Multiplicity="0..1" />
           <End Role="produto" Type="sgateModel.Store.produto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -67,8 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sgateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -76,13 +114,19 @@
           <EntitySet Name="pacote" EntityType="sgateModel.pacote" />
           <EntitySet Name="produto" EntityType="sgateModel.produto" />
           <EntitySet Name="tipoproduto" EntityType="sgateModel.tipoproduto" />
-          <AssociationSet Name="FK__produto__idpacot__08EA5793" Association="sgateModel.FK__produto__idpacot__08EA5793">
-            <End Role="pacote" EntitySet="pacote" />
-            <End Role="produto" EntitySet="produto" />
-          </AssociationSet>
           <AssociationSet Name="FK__produto__idtipo__09DE7BCC" Association="sgateModel.FK__produto__idtipo__09DE7BCC">
             <End Role="tipoproduto" EntitySet="tipoproduto" />
             <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <EntitySet Name="cliente" EntityType="sgateModel.cliente" />
+          <EntitySet Name="itenspacote" EntityType="sgateModel.itenspacote" />
+          <AssociationSet Name="FK__itenspaco__idPac__0DAF0CB0" Association="sgateModel.FK__itenspaco__idPac__0DAF0CB0">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="itenspacote" EntitySet="itenspacote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__itenspaco__idpro__0EA330E9" Association="sgateModel.FK__itenspaco__idpro__0EA330E9">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="itenspacote" EntitySet="itenspacote" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="pacote">
@@ -91,7 +135,7 @@
           </Key>
           <Property Name="idpacote" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="pacote1" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="produto" Relationship="sgateModel.FK__produto__idpacot__08EA5793" FromRole="pacote" ToRole="produto" />
+          <NavigationProperty Name="itenspacote" Relationship="sgateModel.FK__itenspaco__idPac__0DAF0CB0" FromRole="pacote" ToRole="itenspacote" />
         </EntityType>
         <EntityType Name="produto">
           <Key>
@@ -101,10 +145,9 @@
           <Property Name="descricao" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="dataexpiracao" Type="DateTime" Precision="3" />
           <Property Name="valorproduto" Type="Decimal" Precision="20" Scale="2" />
-          <Property Name="idpacote" Type="Int32" />
           <Property Name="idtipo" Type="Int32" />
-          <NavigationProperty Name="pacote" Relationship="sgateModel.FK__produto__idpacot__08EA5793" FromRole="produto" ToRole="pacote" />
           <NavigationProperty Name="tipoproduto" Relationship="sgateModel.FK__produto__idtipo__09DE7BCC" FromRole="produto" ToRole="tipoproduto" />
+          <NavigationProperty Name="itenspacote" Relationship="sgateModel.FK__itenspaco__idpro__0EA330E9" FromRole="produto" ToRole="itenspacote" />
         </EntityType>
         <EntityType Name="tipoproduto">
           <Key>
@@ -114,18 +157,6 @@
           <Property Name="tipo" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="produto" Relationship="sgateModel.FK__produto__idtipo__09DE7BCC" FromRole="tipoproduto" ToRole="produto" />
         </EntityType>
-        <Association Name="FK__produto__idpacot__08EA5793">
-          <End Role="pacote" Type="sgateModel.pacote" Multiplicity="0..1" />
-          <End Role="produto" Type="sgateModel.produto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pacote">
-              <PropertyRef Name="idpacote" />
-            </Principal>
-            <Dependent Role="produto">
-              <PropertyRef Name="idpacote" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__produto__idtipo__09DE7BCC">
           <End Role="tipoproduto" Type="sgateModel.tipoproduto" Multiplicity="0..1" />
           <End Role="produto" Type="sgateModel.produto" Multiplicity="*" />
@@ -135,6 +166,54 @@
             </Principal>
             <Dependent Role="produto">
               <PropertyRef Name="idtipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="idcliente" />
+          </Key>
+          <Property Type="Int32" Name="idcliente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cpf" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="logradouro" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="numero" />
+          <Property Type="String" Name="bairro" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cidade" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="uf" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="itenspacote">
+          <Key>
+            <PropertyRef Name="idItemPacote" />
+          </Key>
+          <Property Type="Int32" Name="idItemPacote" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idPacote" />
+          <Property Type="Int32" Name="idproduto" />
+          <NavigationProperty Name="pacote" Relationship="sgateModel.FK__itenspaco__idPac__0DAF0CB0" FromRole="itenspacote" ToRole="pacote" />
+          <NavigationProperty Name="produto" Relationship="sgateModel.FK__itenspaco__idpro__0EA330E9" FromRole="itenspacote" ToRole="produto" />
+        </EntityType>
+        <Association Name="FK__itenspaco__idPac__0DAF0CB0">
+          <End Type="sgateModel.pacote" Role="pacote" Multiplicity="0..1" />
+          <End Type="sgateModel.itenspacote" Role="itenspacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idpacote" />
+            </Principal>
+            <Dependent Role="itenspacote">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__itenspaco__idpro__0EA330E9">
+          <End Type="sgateModel.produto" Role="produto" Multiplicity="0..1" />
+          <End Type="sgateModel.itenspacote" Role="itenspacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="idproduto" />
+            </Principal>
+            <Dependent Role="itenspacote">
+              <PropertyRef Name="idproduto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -159,7 +238,6 @@
                 <ScalarProperty Name="descricao" ColumnName="descricao" />
                 <ScalarProperty Name="dataexpiracao" ColumnName="dataexpiracao" />
                 <ScalarProperty Name="valorproduto" ColumnName="valorproduto" />
-                <ScalarProperty Name="idpacote" ColumnName="idpacote" />
                 <ScalarProperty Name="idtipo" ColumnName="idtipo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -169,6 +247,30 @@
               <MappingFragment StoreEntitySet="tipoproduto">
                 <ScalarProperty Name="idtipo" ColumnName="idtipo" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="sgateModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="idcliente" ColumnName="idcliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itenspacote">
+            <EntityTypeMapping TypeName="sgateModel.itenspacote">
+              <MappingFragment StoreEntitySet="itenspacote">
+                <ScalarProperty Name="idproduto" ColumnName="idproduto" />
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+                <ScalarProperty Name="idItemPacote" ColumnName="idItemPacote" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

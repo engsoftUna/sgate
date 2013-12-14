@@ -1,0 +1,29 @@
+﻿@model sgate.Models.tipoproduto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>tipoproduto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idtipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idtipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tipo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

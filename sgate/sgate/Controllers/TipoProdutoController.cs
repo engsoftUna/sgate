@@ -9,113 +9,108 @@ using sgate.Models;
 
 namespace sgate.Controllers
 {
-    public class ProdutoController : Controller
+    public class TipoProdutoController : Controller
     {
         private sgateEntities db = new sgateEntities();
 
         //
-        // GET: /Produto/
+        // GET: /TipoProduto/
 
         public ActionResult Index()
         {
-            var produto = db.produto.Include(p => p.tipoproduto);
-            return View(produto.ToList());
+            return View(db.tipoproduto.ToList());
         }
 
         //
-        // GET: /Produto/Details/5
+        // GET: /TipoProduto/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            tipoproduto tipoproduto = db.tipoproduto.Find(id);
+            if (tipoproduto == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(tipoproduto);
         }
 
         //
-        // GET: /Produto/Create
+        // GET: /TipoProduto/Create
 
         public ActionResult Create()
         {
-            ViewBag.idpacote = new SelectList(db.pacote, "idpacote", "pacote1");
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo");
             return View();
         }
 
         //
-        // POST: /Produto/Create
+        // POST: /TipoProduto/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(produto produto)
+        public ActionResult Create(tipoproduto tipoproduto)
         {
             if (ModelState.IsValid)
             {
-                db.produto.Add(produto);
+                db.tipoproduto.Add(tipoproduto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(tipoproduto);
         }
 
         //
-        // GET: /Produto/Edit/5
+        // GET: /TipoProduto/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+
+            tipoproduto tipoproduto = db.tipoproduto.Find(id);
+            if (tipoproduto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(tipoproduto);
         }
 
         //
-        // POST: /Produto/Edit/5
+        // POST: /TipoProduto/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(produto produto)
+        public ActionResult Edit(tipoproduto tipoproduto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produto).State = EntityState.Modified;
+                db.Entry(tipoproduto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(tipoproduto);
         }
 
         //
-        // GET: /Produto/Delete/5
+        // GET: /TipoProduto/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            tipoproduto tipoproduto = db.tipoproduto.Find(id);
+            if (tipoproduto == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(tipoproduto);
         }
 
         //
-        // POST: /Produto/Delete/5
+        // POST: /TipoProduto/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            produto produto = db.produto.Find(id);
-            db.produto.Remove(produto);
+            tipoproduto tipoproduto = db.tipoproduto.Find(id);
+            db.tipoproduto.Remove(tipoproduto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

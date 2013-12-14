@@ -9,113 +9,107 @@ using sgate.Models;
 
 namespace sgate.Controllers
 {
-    public class ProdutoController : Controller
+    public class ClienteController : Controller
     {
         private sgateEntities db = new sgateEntities();
 
         //
-        // GET: /Produto/
+        // GET: /Cliente/
 
         public ActionResult Index()
         {
-            var produto = db.produto.Include(p => p.tipoproduto);
-            return View(produto.ToList());
+            return View(db.cliente.ToList());
         }
 
         //
-        // GET: /Produto/Details/5
+        // GET: /Cliente/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            cliente cliente = db.cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(cliente);
         }
 
         //
-        // GET: /Produto/Create
+        // GET: /Cliente/Create
 
         public ActionResult Create()
         {
-            ViewBag.idpacote = new SelectList(db.pacote, "idpacote", "pacote1");
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo");
             return View();
         }
 
         //
-        // POST: /Produto/Create
+        // POST: /Cliente/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(produto produto)
+        public ActionResult Create(cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.produto.Add(produto);
+                db.cliente.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(cliente);
         }
 
         //
-        // GET: /Produto/Edit/5
+        // GET: /Cliente/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            cliente cliente = db.cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(cliente);
         }
 
         //
-        // POST: /Produto/Edit/5
+        // POST: /Cliente/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(produto produto)
+        public ActionResult Edit(cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(produto).State = EntityState.Modified;
+                db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
-            return View(produto);
+            return View(cliente);
         }
 
         //
-        // GET: /Produto/Delete/5
+        // GET: /Cliente/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            produto produto = db.produto.Find(id);
-            if (produto == null)
+            cliente cliente = db.cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(cliente);
         }
 
         //
-        // POST: /Produto/Delete/5
+        // POST: /Cliente/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            produto produto = db.produto.Find(id);
-            db.produto.Remove(produto);
+            cliente cliente = db.cliente.Find(id);
+            db.cliente.Remove(cliente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

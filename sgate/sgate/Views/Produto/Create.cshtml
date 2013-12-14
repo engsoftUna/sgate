@@ -1,25 +1,18 @@
 ﻿@model sgate.Models.produto
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Produtos";
 }
 
-<h2>Create</h2>
+<h2>Produtos</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>produto</legend>
+        <legend>Produto</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idproduto)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idproduto)
-            @Html.ValidationMessageFor(model => model.idproduto)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.descricao)
@@ -43,14 +36,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.valorproduto)
             @Html.ValidationMessageFor(model => model.valorproduto)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idpacote, "pacote")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("idpacote", String.Empty)
-            @Html.ValidationMessageFor(model => model.idpacote)
         </div>
 
         <div class="editor-label">

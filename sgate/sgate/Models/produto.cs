@@ -11,17 +11,30 @@ namespace sgate.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class produto
     {
+        public produto()
+        {
+            this.itenspacote = new HashSet<itenspacote>();
+        }
+        [Display(Name = "Código")]
         public int idproduto { get; set; }
+        [Required]
+        [Display(Name = "Descriçao")]
         public string descricao { get; set; }
+        [Required]
+        [Display(Name = "Data de Expiração")]
         public Nullable<System.DateTime> dataexpiracao { get; set; }
+        [Required]
+        [Display(Name = "Valor")]
         public Nullable<decimal> valorproduto { get; set; }
-        public Nullable<int> idpacote { get; set; }
+        [Required]
+        [Display(Name = "Tipo de Produto")]
         public Nullable<int> idtipo { get; set; }
-    
-        public virtual pacote pacote { get; set; }
+
         public virtual tipoproduto tipoproduto { get; set; }
+        public virtual ICollection<itenspacote> itenspacote { get; set; }
     }
 }

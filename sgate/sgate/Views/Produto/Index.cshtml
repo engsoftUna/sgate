@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<sgate.Models.produto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produtos";
 }
 
-<h2>Index</h2>
+<h2>Produtos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,9 +22,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.valorproduto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pacote.pacote1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.tipoproduto.tipo)
@@ -47,15 +44,12 @@
             @Html.DisplayFor(modelItem => item.valorproduto)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pacote.pacote1)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.tipoproduto.tipo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id = item.idproduto }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idproduto }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idproduto })
         </td>
     </tr>
 }

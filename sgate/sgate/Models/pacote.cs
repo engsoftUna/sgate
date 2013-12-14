@@ -16,12 +16,12 @@ namespace sgate.Models
     {
         public pacote()
         {
-            this.produto = new HashSet<produto>();
+            this.itenspacote = new HashSet<itenspacote>();
         }
     
         public int idpacote { get; set; }
         public string pacote1 { get; set; }
     
-        public virtual ICollection<produto> produto { get; set; }
+        public virtual ICollection<itenspacote> itenspacote { get; set; }
     }
 }

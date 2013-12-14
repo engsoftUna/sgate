@@ -28,5 +28,7 @@ namespace sgate.Models
         public DbSet<pacote> pacote { get; set; }
         public DbSet<produto> produto { get; set; }
         public DbSet<tipoproduto> tipoproduto { get; set; }
+        public DbSet<cliente> cliente { get; set; }
+        public DbSet<itenspacote> itenspacote { get; set; }
     }
 }

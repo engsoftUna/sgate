@@ -14,10 +14,10 @@
         <legend>produto</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idproduto)
+            @Html.HiddenFor(model => model.idproduto)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idproduto)
+            @Html.HiddenFor(model => model.idproduto)
             @Html.ValidationMessageFor(model => model.idproduto)
         </div>
 
