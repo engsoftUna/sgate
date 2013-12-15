@@ -1,17 +1,17 @@
 ﻿@model sgate.Models.tipoproduto
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Tipos de Produtos";
 }
 
-<h2>Edit</h2>
+<h2>Edição dos Tipos de Produtos</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>tipoproduto</legend>
+        <legend>Tipos de Produtos</legend>
 
         <div class="editor-label">
             @Html.HiddenFor(model => model.idtipo)
@@ -30,13 +30,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Salvar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {

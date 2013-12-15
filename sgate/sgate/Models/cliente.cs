@@ -17,29 +17,45 @@ namespace sgate.Models
     {
         [Display(Name = "Código")]
         public int idcliente { get; set; }
+
         [Required]
         [Display(Name = "Nome")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
         public string nome { get; set; }
+
         [Required]
         [Display(Name = "CPF")]
+        [StringLength(11, ErrorMessage = "Campo permite somente 11 caracteres.")]
         public string cpf { get; set; }
+
         [Required]
         [Display(Name = "Logradouro")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
         public string logradouro { get; set; }
+
         [Required]
         [Display(Name = "Número")]
         public Nullable<int> numero { get; set; }
+
         [Required]
         [Display(Name = "Bairro")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
         public string bairro { get; set; }
+
         [Required]
         [Display(Name = "Cidade")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
         public string cidade { get; set; }
+
         [Required]
         [Display(Name = "UF")]
+        [StringLength(2, ErrorMessage = "Campo permite somente 2 caracteres.")]
         public string uf { get; set; }
+
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
+        [EmailAddress]
         public string email { get; set; }
     }
 }

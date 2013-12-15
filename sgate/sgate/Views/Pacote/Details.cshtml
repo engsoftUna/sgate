@@ -1,19 +1,19 @@
 ﻿@model sgate.Models.pacote
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Pacotes";
 }
 
-<h2>Details</h2>
+<h2>Detalhe do Pacote</h2>
 
 <fieldset>
-    <legend>pacote</legend>
+    <legend>Detalhe do Pacote</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.idpacote)
+         @Html.HiddenFor(model => model.idpacote)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idpacote)
+        @Html.HiddenFor(model => model.idpacote)
     </div>
 
     <div class="display-label">
@@ -24,6 +24,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.idpacote }) |
+    @Html.ActionLink("Voltar", "Index")
 </p>

@@ -1,13 +1,13 @@
 ﻿@model sgate.Models.tipoproduto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Tipos de Produtos";
 }
 
-<h2>Details</h2>
+<h2>Detalhes dos Tipos de Produtos</h2>
 
 <fieldset>
-    <legend>tipoproduto</legend>
+    <legend>Tipos de Produtos</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.idtipo)
@@ -24,6 +24,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.idtipo }) |
+    @Html.ActionLink("Voltar", "Index")
 </p>

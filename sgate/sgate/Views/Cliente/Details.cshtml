@@ -1,19 +1,19 @@
 ﻿@model sgate.Models.cliente
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Clientes";
 }
 
-<h2>Details</h2>
+<h2>Detalhe do Cliente</h2>
 
 <fieldset>
-    <legend>cliente</legend>
+    <legend>Detalhe do Cliente</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.idcliente)
+         @Html.HiddenFor(model => model.idcliente)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idcliente)
+        @Html.HiddenFor(model => model.idcliente)
     </div>
 
     <div class="display-label">
@@ -73,6 +73,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.idcliente }) |
+    @Html.ActionLink("Voltar", "Index")
 </p>

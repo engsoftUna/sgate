@@ -25,14 +25,17 @@ namespace sgate.Models
         
         [Required]
         [Display(Name = "Descriçao")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
         public string descricao { get; set; }
         
         [Required]
         [Display(Name = "Data de Expiração")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> dataexpiracao { get; set; }
         
         [Required]
         [Display(Name = "Valor")]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public Nullable<decimal> valorproduto { get; set; }
         
         [Required]

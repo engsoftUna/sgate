@@ -4,14 +4,14 @@
     ViewBag.Title = "Clientes";
 }
 
-<h2>Clientes</h2>
+<h2>Inserir Novos Clientes</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Cliente</legend>
+        <legend>Inserir Novos Clientes</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.nome)
@@ -78,13 +78,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Salvar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {

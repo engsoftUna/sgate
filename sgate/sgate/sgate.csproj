@@ -270,26 +270,26 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Produto\Index.cshtml" />
-    <Content Include="Views\Produto\Details.cshtml" />
-    <Content Include="Views\Produto\Create.cshtml" />
-    <Content Include="Views\Produto\Edit.cshtml" />
-    <Content Include="Views\Produto\Delete.cshtml" />
     <Content Include="Views\TipoProduto\Index.cshtml" />
     <Content Include="Views\TipoProduto\Details.cshtml" />
     <Content Include="Views\TipoProduto\Create.cshtml" />
     <Content Include="Views\TipoProduto\Edit.cshtml" />
     <Content Include="Views\TipoProduto\Delete.cshtml" />
-    <Content Include="Views\Pacote\Index.cshtml" />
-    <Content Include="Views\Pacote\Details.cshtml" />
-    <Content Include="Views\Pacote\Create.cshtml" />
-    <Content Include="Views\Pacote\Edit.cshtml" />
-    <Content Include="Views\Pacote\Delete.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\Details.cshtml" />
+    <Content Include="Views\Produto\Create.cshtml" />
+    <Content Include="Views\Produto\Edit.cshtml" />
+    <Content Include="Views\Produto\Delete.cshtml" />
+    <Content Include="Views\Pacote\Index.cshtml" />
+    <Content Include="Views\Pacote\Details.cshtml" />
+    <Content Include="Views\Pacote\Create.cshtml" />
+    <Content Include="Views\Pacote\Edit.cshtml" />
+    <Content Include="Views\Pacote\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

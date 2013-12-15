@@ -18,6 +18,8 @@ namespace sgate.Controllers
 
         public ActionResult Index()
         {
+            //var pacote = db.produto.Include(p => p.tipoproduto);
+            //return View(pacote.ToList());
             return View(db.pacote.ToList());
         }
 
@@ -39,6 +41,7 @@ namespace sgate.Controllers
 
         public ActionResult Create()
         {
+            //ViewBag.idproduto = new SelectList(db.produto, "idproduto", "descricao");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace sgate.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            //ViewBag.idproduto = new SelectList(db.produto, "idproduto", "descricao", itenspacote.idproduto);
             return View(pacote);
         }
 

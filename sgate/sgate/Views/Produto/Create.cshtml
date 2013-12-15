@@ -4,14 +4,14 @@
     ViewBag.Title = "Produtos";
 }
 
-<h2>Produtos</h2>
+<h2>Inserir Novo Produto</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Produto</legend>
+        <legend>Inserir Novo Produto</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.descricao)
@@ -38,7 +38,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idtipo, "tipoproduto")
+            @Html.LabelFor(model => model.idtipo, "Tipo de Produto")
         </div>
         <div class="editor-field">
             @Html.DropDownList("idtipo", String.Empty)
@@ -46,13 +46,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Salvar" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {

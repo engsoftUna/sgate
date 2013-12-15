@@ -11,15 +11,22 @@ namespace sgate.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class pacote
     {
         public pacote()
         {
             this.itenspacote = new HashSet<itenspacote>();
         }
-    
+
+        [Required]
+        [Display(Name = "Código")]
         public int idpacote { get; set; }
+
+        [Required]
+        [Display(Name = "Pacote")]
+        [StringLength(150, ErrorMessage = "Campo permite somente 150 caracteres.")]
         public string pacote1 { get; set; }
     
         public virtual ICollection<itenspacote> itenspacote { get; set; }

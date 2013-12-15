@@ -6,25 +6,26 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
 
 namespace sgate.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tipoproduto
     {
         public tipoproduto()
         {
             this.produto = new HashSet<produto>();
         }
-    
-        [Display (Name="Código")]
+
+        [Display(Name = "Código")]
         public int idtipo { get; set; }
 
         [Required]
-        [Display(Name = "Código")]
+        [Display(Name = "Produto")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
         public string tipo { get; set; }
     
         public virtual ICollection<produto> produto { get; set; }

@@ -1,23 +1,23 @@
 ﻿@model sgate.Models.pacote
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Pacotes";
 }
 
-<h2>Edit</h2>
+<h2>Edição do Pacote</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>pacote</legend>
+        <legend>Edição do Pacote</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idpacote)
+            @Html.HiddenFor(model => model.idpacote)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.idpacote)
+            @Html.HiddenFor(model => model.idpacote)
             @Html.ValidationMessageFor(model => model.idpacote)
         </div>
 
@@ -36,7 +36,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<sgate.Models.pacote>
 
 @{
-    ViewBag.Title = "Pacote de Produtos";
+    ViewBag.Title = "Pacotes";
 }
 
-<h2>Pacote de Produtos</h2>
+<h2>Lista de Pacotes</h2>
 
 <p>
     @Html.ActionLink("Novo", "Create")
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.pacote1)
         </td>
         <td>
-            @Html.ActionLink("Alterar", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Detalhar", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Excluir", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Alterar", "Edit", new { id = item.idpacote }) |
+            @Html.ActionLink("Detalhe", "Details", new { id = item.idpacote }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.idpacote })
         </td>
     </tr>
 }

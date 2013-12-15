@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ad56bc4df1db43979044b2377bb88a19" Name="Diagram1">
-        <EntityTypeShape EntityType="sgateModel.pacote" Width="1.5" PointX="0.75" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgateModel.produto" Width="1.5" PointX="3.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgateModel.tipoproduto" Width="1.5" PointX="5.875" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.pacote" Width="1.5" PointX="1" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.produto" Width="1.5" PointX="3.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.tipoproduto" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="sgateModel.FK__produto__idtipo__09DE7BCC" ManuallyRouted="false" />
         <EntityTypeShape EntityType="sgateModel.cliente" Width="1.5" PointX="8.25" PointY="1.5" />
         <EntityTypeShape EntityType="sgateModel.itenspacote" Width="1.5" PointX="1" PointY="3.125" />

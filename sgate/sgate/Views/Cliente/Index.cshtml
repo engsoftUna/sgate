@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<sgate.Models.cliente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clientes";
 }
 
-<h2>Index</h2>
+<h2>Lista de Clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo", "Create")
 </p>
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idcliente)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.nome)
         </th>
@@ -44,9 +41,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.idcliente)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.nome)
         </td>
         <td>
@@ -71,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.idcliente }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idcliente }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idcliente })
+            @Html.ActionLink("Alterar", "Edit", new { id = item.idcliente }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.idcliente }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.idcliente })
         </td>
     </tr>
 }
