@@ -13,7 +13,7 @@ idtipo int
 
 CREATE TABLE pacote (
 idpacote int PRIMARY KEY,
-pacote varchar(250)
+descricao varchar(250)
 )
 
 CREATE TABLE itenspacote(
