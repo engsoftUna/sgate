@@ -46,7 +46,6 @@ namespace sgate.Controllers
         // POST: /TipoProduto/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(tipoproduto tipoproduto)
         {
             if (ModelState.IsValid)
@@ -64,7 +63,6 @@ namespace sgate.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-
             tipoproduto tipoproduto = db.tipoproduto.Find(id);
             if (tipoproduto == null)
             {
@@ -77,7 +75,6 @@ namespace sgate.Controllers
         // POST: /TipoProduto/Edit/5
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(tipoproduto tipoproduto)
         {
             if (ModelState.IsValid)
@@ -106,7 +103,6 @@ namespace sgate.Controllers
         // POST: /TipoProduto/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             tipoproduto tipoproduto = db.tipoproduto.Find(id);

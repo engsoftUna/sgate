@@ -12,16 +12,16 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    
+                    <p class="site-title">@Html.ActionLink("SGATE", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
                             <li>@Html.ActionLink("Tipos de Produtos", "Index", "TipoProduto")</li>
                             <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
                             <li>@Html.ActionLink("Pacotes", "Index", "Pacote")</li>
-                            <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
                         </ul>
                     </nav>
                 </div>

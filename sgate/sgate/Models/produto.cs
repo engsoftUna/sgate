@@ -12,37 +12,38 @@ namespace sgate.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class produto
     {
         public produto()
         {
             this.itenspacote = new HashSet<itenspacote>();
         }
-        
+
+        [Required]
         [Display(Name = "Código")]
         public int idproduto { get; set; }
-        
-        [Required]
-        [Display(Name = "Descriçao")]
-        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
+
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Display(Name = "Descrição")]
         public string descricao { get; set; }
-        
-        [Required]
-        [Display(Name = "Data de Expiração")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Display(Name = "Data Expiração")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> dataexpiracao { get; set; }
-        
-        [Required]
+
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Valor")]
-        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
+        [Range(0.01, 999.99, ErrorMessage = "Valor informado inválido")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public Nullable<decimal> valorproduto { get; set; }
-        
-        [Required]
-        [Display(Name = "Tipo de Produto")]
+
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Display(Name = "Tipo do Produto")]
         public Nullable<int> idtipo { get; set; }
 
-        public virtual tipoproduto tipoproduto { get; set; }
         public virtual ICollection<itenspacote> itenspacote { get; set; }
+        public virtual tipoproduto tipoproduto { get; set; }
     }
 }

@@ -24,11 +24,10 @@ namespace sgate.Models
         [Display(Name = "Código")]
         public int idpacote { get; set; }
 
-        [Required]
-        [Display(Name = "Pacote")]
-        [StringLength(150, ErrorMessage = "Campo permite somente 150 caracteres.")]
-        public string pacote1 { get; set; }
-    
+        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Display(Name = "Descrição")]
+        public string descricao { get; set; }
+
         public virtual ICollection<itenspacote> itenspacote { get; set; }
     }
 }

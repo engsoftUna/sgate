@@ -1,17 +1,16 @@
 ﻿@model sgate.Models.produto
 
 @{
-    ViewBag.Title = "Produtos";
+    ViewBag.Title = "Produto";
 }
 
-<h2>Edição do Produto</h2>
+<h2>Alteração de Produto</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edição do Produto</legend>
+        <legend>Alteração de Produto</legend>
 
         <div class="editor-label">
             @Html.HiddenFor(model => model.idproduto)
@@ -46,7 +45,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.idtipo, "tipoproduto")
+            @Html.LabelFor(model => model.idtipo)
         </div>
         <div class="editor-field">
             @Html.DropDownList("idtipo", String.Empty)

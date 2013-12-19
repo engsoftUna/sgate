@@ -1,6 +1,6 @@
 CREATE TABLE tipoproduto (
 idtipo int identity primary key,
-tipo varchar(250)
+descricao varchar(250)
 )
 
 CREATE TABLE produto (
@@ -12,13 +12,13 @@ idtipo int
 )
 
 CREATE TABLE pacote (
-idpacote int PRIMARY KEY,
+idpacote int identity primary key,
 descricao varchar(250)
 )
 
-CREATE TABLE itenspacote(
-idItemPacote int identity primary key,
-idPacote int,
+CREATE TABLE itenspacote (
+iditempacote int identity primary key,
+idpacote int,
 idproduto int
 )
 
@@ -38,4 +38,3 @@ CREATE TABLE cliente (
        uf varchar(250),
        email varchar(250)
 )
-

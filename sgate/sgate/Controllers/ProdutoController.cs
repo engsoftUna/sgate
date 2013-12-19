@@ -40,7 +40,7 @@ namespace sgate.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo");
+            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "descricao");
             return View();
         }
 
@@ -48,7 +48,6 @@ namespace sgate.Controllers
         // POST: /Produto/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(produto produto)
         {
             if (ModelState.IsValid)
@@ -58,7 +57,7 @@ namespace sgate.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
+            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "descricao", produto.idtipo);
             return View(produto);
         }
 
@@ -72,7 +71,7 @@ namespace sgate.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
+            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "descricao", produto.idtipo);
             return View(produto);
         }
 
@@ -80,7 +79,6 @@ namespace sgate.Controllers
         // POST: /Produto/Edit/5
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(produto produto)
         {
             if (ModelState.IsValid)
@@ -89,7 +87,7 @@ namespace sgate.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "tipo", produto.idtipo);
+            ViewBag.idtipo = new SelectList(db.tipoproduto, "idtipo", "descricao", produto.idtipo);
             return View(produto);
         }
 
@@ -110,7 +108,6 @@ namespace sgate.Controllers
         // POST: /Produto/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             produto produto = db.produto.Find(id);

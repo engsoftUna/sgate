@@ -11,6 +11,8 @@ namespace sgate.Controllers
 {
     public class PacoteController : Controller
     {
+        public int idpac, idprod;
+        
         private sgateEntities db = new sgateEntities();
 
         //
@@ -18,8 +20,6 @@ namespace sgate.Controllers
 
         public ActionResult Index()
         {
-            //var pacote = db.produto.Include(p => p.tipoproduto);
-            //return View(pacote.ToList());
             return View(db.pacote.ToList());
         }
 
@@ -28,12 +28,27 @@ namespace sgate.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            pacote pacote = db.pacote.Find(id);
-            if (pacote == null)
+            //ViewBag.itenspac = new List<produto>(db.produto.ToList());
+
+            //busca as informacoes do pacote na base
+            var listpac = (Object)(from pc in db.pacote
+                             join it in db.itenspacote
+                                on  pc.idpacote equals it.idpacote
+                             join pd in db.produto
+                                on it.idproduto equals pd.idproduto
+                             where pc.idpacote.Equals(id)
+                             orderby it.iditempacote
+                             select new { pd.idproduto, pd.descricao, pd.valorproduto, pd.dataexpiracao }
+                         );
+
+            ViewBag.itenspac = (Object)listpac;
+
+            if (ViewBag.itenspac == null)
             {
                 return HttpNotFound();
             }
-            return View(pacote);
+            //return View(pacote);
+            return View();
         }
 
         //
@@ -41,7 +56,7 @@ namespace sgate.Controllers
 
         public ActionResult Create()
         {
-            //ViewBag.idproduto = new SelectList(db.produto, "idproduto", "descricao");
+            ViewBag.produto = new List<produto>(db.produto.ToList());           
             return View();
         }
 
@@ -49,17 +64,52 @@ namespace sgate.Controllers
         // POST: /Pacote/Create
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(pacote pacote)
+        public ActionResult Create(pacote pacote, FormCollection form)
         {
-            if (ModelState.IsValid)
+            //var desc = form.GetValues("descricao");
+            var idprodpac = form.GetValues("chbidprod");
+
+            foreach (string id in idprodpac)
             {
-                db.pacote.Add(pacote);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (pacote.idpacote == 0)
+                {
+                    db.pacote.Add(pacote);
+                    db.SaveChanges();
+
+                    idpac = pacote.idpacote;
+                    idprod = Convert.ToInt16(id);
+
+                    var itens = new itenspacote
+                    {
+                        idpacote = idpac,
+                        idproduto = idprod
+                    };
+
+                    db.itenspacote.Add(itens);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    idpac = pacote.idpacote;
+                    idprod = Convert.ToInt16(id);
+
+                    var itens = new itenspacote
+                    {
+                        idpacote = idpac,
+                        idproduto = idprod
+                    };
+
+                    db.itenspacote.Add(itens);
+                    db.SaveChanges();
+                }
+                
+                //return RedirectToAction("Index");
             }
-            //ViewBag.idproduto = new SelectList(db.produto, "idproduto", "descricao", itenspacote.idproduto);
-            return View(pacote);
+
+            //return View(pacote);
+            //ViewBag.produto = new List<produto>(db.produto.ToList());
+            //return View();
+            return RedirectToAction("Index");
         }
 
         //
@@ -79,7 +129,6 @@ namespace sgate.Controllers
         // POST: /Pacote/Edit/5
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(pacote pacote)
         {
             if (ModelState.IsValid)
@@ -108,12 +157,16 @@ namespace sgate.Controllers
         // POST: /Pacote/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             pacote pacote = db.pacote.Find(id);
             db.pacote.Remove(pacote);
             db.SaveChanges();
+
+            itenspacote itens = db.itenspacote.First(i => i.idpacote == id);
+            db.itenspacote.Remove(itens);
+            db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

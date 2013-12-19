@@ -1,17 +1,16 @@
 ﻿@model sgate.Models.cliente
 
 @{
-    ViewBag.Title = "Clientes";
+    ViewBag.Title = "Cliente";
 }
 
-<h2>Edição de Cliente</h2>
+<h2>Alteração de Cliente</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edição de Cliente</legend>
+        <legend>Alteração de Cliente</legend>
 
         <div class="editor-label">
             @Html.HiddenFor(model => model.idcliente)

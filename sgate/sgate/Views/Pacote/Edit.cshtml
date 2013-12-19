@@ -1,17 +1,16 @@
 ﻿@model sgate.Models.pacote
 
 @{
-    ViewBag.Title = "Pacotes";
+    ViewBag.Title = "Pacote";
 }
 
-<h2>Edição do Pacote</h2>
+<h2>Alteração do Pacote</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edição do Pacote</legend>
+        <legend>Alteração do Pacote</legend>
 
         <div class="editor-label">
             @Html.HiddenFor(model => model.idpacote)
@@ -22,15 +21,15 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.pacote1)
+            @Html.LabelFor(model => model.descricao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.pacote1)
-            @Html.ValidationMessageFor(model => model.pacote1)
+            @Html.EditorFor(model => model.descricao)
+            @Html.ValidationMessageFor(model => model.descricao)
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Salvar" />
         </p>
     </fieldset>
 }

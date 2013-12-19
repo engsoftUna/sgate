@@ -1,17 +1,16 @@
 ﻿@model sgate.Models.tipoproduto
 
 @{
-    ViewBag.Title = "Tipos de Produtos";
+    ViewBag.Title = "Tipo de Produto";
 }
 
-<h2>Edição dos Tipos de Produtos</h2>
+<h2>Alteração do Tipo de Produto</h2>
 
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Tipos de Produtos</legend>
+        <legend>Alteração do Tipo de Produto</legend>
 
         <div class="editor-label">
             @Html.HiddenFor(model => model.idtipo)
@@ -22,11 +21,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.tipo)
+            @Html.LabelFor(model => model.descricao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.tipo)
-            @Html.ValidationMessageFor(model => model.tipo)
+            @Html.EditorFor(model => model.descricao)
+            @Html.ValidationMessageFor(model => model.descricao)
         </div>
 
         <p>

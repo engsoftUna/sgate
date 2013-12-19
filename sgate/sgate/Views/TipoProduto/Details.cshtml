@@ -1,26 +1,26 @@
 ﻿@model sgate.Models.tipoproduto
 
 @{
-    ViewBag.Title = "Tipos de Produtos";
+    ViewBag.Title = "Tipo de Produto";
 }
 
-<h2>Detalhes dos Tipos de Produtos</h2>
+<h2>Detalhe dos Tipos de Produtos</h2>
 
 <fieldset>
-    <legend>Tipos de Produtos</legend>
+    <legend>Detalhe dos Tipos de Produtos</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.idtipo)
+         @Html.HiddenFor(model => model.idtipo)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.idtipo)
+        @Html.HiddenFor(model => model.idtipo)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.tipo)
+         @Html.DisplayNameFor(model => model.descricao)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.tipo)
+        @Html.DisplayFor(model => model.descricao)
     </div>
 </fieldset>
 <p>

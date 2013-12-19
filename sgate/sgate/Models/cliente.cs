@@ -12,50 +12,52 @@ namespace sgate.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class cliente
     {
+        [Required]
         [Display(Name = "Código")]
         public int idcliente { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Nome")]
-        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres")]
         public string nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "CPF")]
-        [StringLength(11, ErrorMessage = "Campo permite somente 11 caracteres.")]
+        [StringLength(11, ErrorMessage = "Campo permite somente 11 caracteres")]
         public string cpf { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Logradouro")]
-        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres")]
         public string logradouro { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Número")]
         public Nullable<int> numero { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Bairro")]
-        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres")]
         public string bairro { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Cidade")]
-        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
+        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres")]
         public string cidade { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "UF")]
-        [StringLength(2, ErrorMessage = "Campo permite somente 2 caracteres.")]
+        [StringLength(2, ErrorMessage = "Campo permite somente 2 caracteres")]
         public string uf { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "E-mail")]
-        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres.")]
-        [EmailAddress]
+        //[EmailAddress]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail informado inválido")]
+        [StringLength(250, ErrorMessage = "Campo permite somente 250 caracteres")]
         public string email { get; set; }
     }
 }

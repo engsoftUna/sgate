@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<sgate.Models.pacote>
 
 @{
-    ViewBag.Title = "Pacotes";
+    ViewBag.Title = "Pacote";
 }
 
 <h2>Lista de Pacotes</h2>
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.idpacote)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pacote1)
+            @Html.DisplayNameFor(model => model.descricao)
         </th>
         <th></th>
     </tr>
@@ -26,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.idpacote)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pacote1)
+            @Html.DisplayFor(modelItem => item.descricao)
         </td>
         <td>
             @Html.ActionLink("Alterar", "Edit", new { id = item.idpacote }) |

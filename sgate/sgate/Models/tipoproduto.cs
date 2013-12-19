@@ -20,14 +20,14 @@ namespace sgate.Models
             this.produto = new HashSet<produto>();
         }
 
+        [Required]
         [Display(Name = "Código")]
         public int idtipo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Produto")]
-        [StringLength(50, ErrorMessage = "Campo permite somente 50 caracteres.")]
-        public string tipo { get; set; }
-    
+        public string descricao { get; set; }
+
         public virtual ICollection<produto> produto { get; set; }
     }
 }

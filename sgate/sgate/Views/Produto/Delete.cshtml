@@ -1,7 +1,7 @@
 ﻿@model sgate.Models.produto
 
 @{
-    ViewBag.Title = "Produtos";
+    ViewBag.Title = "Produto";
 }
 
 <h2>Exclusão de Produto</h2>
@@ -39,14 +39,13 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.tipoproduto.tipo)
+         @Html.DisplayNameFor(model => model.tipoproduto.descricao)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.tipoproduto.tipo)
+        @Html.DisplayFor(model => model.tipoproduto.descricao)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Excluir" /> |
         @Html.ActionLink("Voltar", "Index")

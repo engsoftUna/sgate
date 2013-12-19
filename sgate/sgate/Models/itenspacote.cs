@@ -11,13 +11,15 @@ namespace sgate.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class itenspacote
     {
-        public int idItemPacote { get; set; }
-        public Nullable<int> idPacote { get; set; }
+
+        public int iditempacote { get; set; }
+        public Nullable<int> idpacote { get; set; }
         public Nullable<int> idproduto { get; set; }
-    
+
         public virtual pacote pacote { get; set; }
         public virtual produto produto { get; set; }
     }

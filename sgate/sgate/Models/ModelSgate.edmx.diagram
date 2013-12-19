@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ad56bc4df1db43979044b2377bb88a19" Name="Diagram1">
-        <EntityTypeShape EntityType="sgateModel.pacote" Width="1.5" PointX="1" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgateModel.produto" Width="1.5" PointX="3.375" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sgateModel.tipoproduto" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
-        <AssociationConnector Association="sgateModel.FK__produto__idtipo__09DE7BCC" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="sgateModel.cliente" Width="1.5" PointX="8.25" PointY="1.5" />
-        <EntityTypeShape EntityType="sgateModel.itenspacote" Width="1.5" PointX="1" PointY="3.125" />
-        <AssociationConnector Association="sgateModel.FK__itenspaco__idPac__0DAF0CB0" />
-        <AssociationConnector Association="sgateModel.FK__itenspaco__idpro__0EA330E9" />
+      <Diagram DiagramId="587000de93454f9586802cec81347875" Name="Diagram1">
+        <EntityTypeShape EntityType="sgateModel.cliente" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.itenspacote" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.pacote" Width="1.5" PointX="7.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sgateModel.produto" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="sgateModel.FK__itenspaco__idpac__4BE214AA" ManuallyRouted="false" />
+        <AssociationConnector Association="sgateModel.FK__itenspaco__idpro__4CD638E3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="sgateModel.tipoproduto" Width="1.5" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="sgateModel.FK__produto__idtipo__37A5467C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

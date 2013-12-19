@@ -25,10 +25,10 @@ namespace sgate.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<cliente> cliente { get; set; }
+        public DbSet<itenspacote> itenspacote { get; set; }
         public DbSet<pacote> pacote { get; set; }
         public DbSet<produto> produto { get; set; }
         public DbSet<tipoproduto> tipoproduto { get; set; }
-        public DbSet<cliente> cliente { get; set; }
-        public DbSet<itenspacote> itenspacote { get; set; }
     }
 }

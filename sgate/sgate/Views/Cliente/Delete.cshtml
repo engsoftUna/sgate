@@ -1,14 +1,14 @@
 ﻿@model sgate.Models.cliente
 
 @{
-    ViewBag.Title = "Clientes";
+    ViewBag.Title = "Cliente";
 }
 
 <h2>Exclusão de Cliente</h2>
 
 <h3>Deseja excluir este cliente?</h3>
 <fieldset>
-    <legend>cliente</legend>
+    <legend>Exclusão de Cliente</legend>
 
     <div class="display-label">
          @Html.HiddenFor(model => model.idcliente)
@@ -74,7 +74,6 @@
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Excluir" /> |
         @Html.ActionLink("Voltar", "Index")

@@ -1,26 +1,71 @@
 ﻿@model sgate.Models.pacote
 
 @{
-    ViewBag.Title = "Pacotes";
+    ViewBag.Title = "Pacote";
 }
 
-<h2>Inserir Pacote</h2>
+@{    
+    var grid = new WebGrid(
+        source: ViewBag.produto,
+        defaultSort: "descricao",
+        rowsPerPage:10, 
+        canPage:true,
+        canSort:true
+    );  
+}
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
+<style type="text/css">
+    .webGrid { margin: 4px; border-collapse: collapse; width: 500px;  background-color:#e0e1e1;}
+    .header { background-color: #b4b5b5; font-weight: bold; color: #000; }
+    .webGrid th, .webGrid td { border: 1px solid groove; padding: 2px; }
+    .alt { background-color: #d2d5d5; color: #000; }
+    .gridHead a:hover {text-decoration:underline;}
+    .description { width:auto}
+    .select{background-color: #71857C}
+</style> 
+
+<h2>Novo Pacote</h2>
+
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Inserir Pacote</legend>
+        <legend>pacote</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.pacote1)
+            @Html.LabelFor(model => model.descricao)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.pacote1)
-            @Html.ValidationMessageFor(model => model.pacote1)
+            @Html.EditorFor(model => model.descricao)
+            @Html.ValidationMessageFor(model => model.descricao)
         </div>
 
+        <div>
+            @*grid.GetHtml()*@
+            @grid.GetHtml(
+                tableStyle: "webGrid", headerStyle: "header", alternatingRowStyle: "alt", selectedRowStyle: "select",
+                    columns: 
+                        grid.Columns(
+                            grid.Column(header:"", format: @<text><input id="chbid" name="chbidprod" type="checkbox" value="@item.idproduto" /></text>),
+                            grid.Column("descricao", header:"Descrição"),
+                            grid.Column("valorproduto", header:"Valor"),
+                            grid.Column("dataexpiracao", header:"Data de Expiração")
+                            
+                            @*
+                            grid.Column(header: "Status", format: (item) => (item.dataexpiracao > DateTime.Now ) ? "Ativo" : "Inativo")
+                            
+                            grid.Column(header:"Descrição", format: (item => item.descricao)),
+                            grid.Column(header:"Valor", format: (item) => item.valorproduto)),
+                            grid.Column(header:"Data de Expiração", format: (item) => string.Format("{0:dd/MM/yyyy}", item.dataexpiracao))
+
+                            grid.Column("IsActive", "Status", format: (item) => (item.IsActive) ? Html.Raw("<img src='../../Content/images/active.png' />") : Html.Raw("<img src='../../Content/images/inactive.png' />"), style: "colOperation"),
+                            grid.Column(header: "Edit", format: @<text><a href="@Url.Action("Edit", "Contact", new { id = item.id })" ><img src="../../Content/images/edit.png" alt="" style="border:none;" /></a></text>, style: "colOperation"),
+                            grid.Column(header: "Delete", format: @<text><a href="@Url.Action("Delete", "Contact", new { id = item.id })" onclick="javascript:return ConfirmDelete();"><img src="../../Content/images/delete.png" alt="" style="border:none;" /></a></text>, style: "colOperation")),
+                            mode:WebGridPagerModes.Numeric
+                            *@
+                    ))
+        </div>   
         <p>
             <input type="submit" value="Salvar" />
         </p>
@@ -30,6 +75,7 @@
 <div>
     @Html.ActionLink("Voltar", "Index")
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

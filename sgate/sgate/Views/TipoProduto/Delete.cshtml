@@ -1,14 +1,14 @@
 ﻿@model sgate.Models.tipoproduto
 
 @{
-    ViewBag.Title = "Tipos de Produtos";
+    ViewBag.Title = "Tipo de Produto";
 }
 
-<h2>Exclusão dos Tipos de Produtos</h2>
+<h2>Exclusão do Tipo de Produto</h2>
 
 <h3>Deseja excluir este tipo de produto?</h3>
 <fieldset>
-    <legend>Tipos de Produtos</legend>
+    <legend>tipoproduto</legend>
 
     <div class="display-label">
          @Html.HiddenFor(model => model.idtipo)
@@ -18,14 +18,13 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.tipo)
+         @Html.DisplayNameFor(model => model.descricao)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.tipo)
+        @Html.DisplayFor(model => model.descricao)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Excluir" /> |
         @Html.ActionLink("Voltar", "Index")

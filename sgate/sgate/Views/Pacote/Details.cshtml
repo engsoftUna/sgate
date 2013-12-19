@@ -1,8 +1,28 @@
 ﻿@model sgate.Models.pacote
 
 @{
-    ViewBag.Title = "Pacotes";
+    ViewBag.Title = "Pacote";
 }
+
+@{    
+    var grid = new WebGrid(
+        source: ViewBag.itenspac,
+        defaultSort: "descricao",
+        rowsPerPage:10, 
+        canPage:true,
+        canSort:true
+    );  
+}
+
+<style type="text/css">
+    .webGrid { margin: 4px; border-collapse: collapse; width: 500px;  background-color:#e0e1e1;}
+    .header { background-color: #b4b5b5; font-weight: bold; color: #000; }
+    .webGrid th, .webGrid td { border: 1px solid groove; padding: 2px; }
+    .alt { background-color: #d2d5d5; color: #000; }
+    .gridHead a:hover {text-decoration:underline;}
+    .description { width:auto}
+    .select{background-color: #71857C}
+</style> 
 
 <h2>Detalhe do Pacote</h2>
 
@@ -17,11 +37,23 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.pacote1)
+         @Html.DisplayNameFor(model => model.descricao)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.pacote1)
+        @Html.DisplayFor(model => model.descricao)
     </div>
+
+    <div>
+        @grid.GetHtml(
+            tableStyle: "webGrid", headerStyle: "header", alternatingRowStyle: "alt", selectedRowStyle: "select",
+                columns: 
+                    grid.Columns(
+                    grid.Column(header:"", format: @<text><input id="chbid" name="chbidprod" type="checkbox" value="@item.idproduto" /></text>),
+                    grid.Column("descricao", header:"Descrição"),
+                    grid.Column("valorproduto", header:"Valor"),
+                    grid.Column("dataexpiracao", header:"Data de Expiração")
+         ))
+    </div>   
 </fieldset>
 <p>
     @Html.ActionLink("Alterar", "Edit", new { id = Model.idpacote }) |
